@@ -1,4 +1,4 @@
-function rot13(message) {
+function rot(message, num) {
    const alphabetLow = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
    const alphabetUp = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
    let rotArr = []  //  числа из массива arrOfIndexPlusNum, преобразованные в буквы из alphabetLow
@@ -8,10 +8,10 @@ function rot13(message) {
       let charIndex = alphabet.findIndex(item => item === elem) // находим индекс каждой буквы исх.строки в алфавите
       arrOfIndex.push(charIndex) // добавляем в массив этих индексов
       arrOfIndexPlusNum = arrOfIndex.map(index => { // преобразуем массив индексов на заданное число
-         if ((index + 13) >= alphabet.length) { // проверяем, если сумма индекса и заданного числа больше длины алфавита
-            return (index + 13) - alphabet.length // то возвращаем их разницу
+         if ((index + num) >= alphabet.length) { // проверяем, если сумма индекса и заданного числа больше длины алфавита
+            return (index + num) - alphabet.length // то возвращаем их разницу
          }
-         return index + 13 // или сумму индекса и заданного числа
+         return index + num // или сумму индекса и заданного числа
       })
       arrOfIndexPlusNum.forEach(elem => { // для преобразованного массива чисел ищем соответствия в алфавите 
          alphabet.find((item, i) => {  // берем алфавит и каждый элемент и его индекс 
@@ -32,4 +32,4 @@ function rot13(message) {
    });
    return rotArr.join("") 
 }
-console.log(rot13("GRFG-+=435рол"));
+console.log(rot("GRFG", 2));
