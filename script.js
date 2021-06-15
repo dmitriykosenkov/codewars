@@ -32,4 +32,3 @@ function rot(message, num) {
    });
    return rotArr.join("") 
 }
-console.log(rot("GRFG", 2));
